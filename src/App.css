@@ -1,0 +1,175 @@
+img {
+  display: block;
+  max-width: 100%;
+
+  transform: scaleX(-1);
+}
+
+html[data-theme='light'] img {
+  background-color: rgb(245, 245, 245);
+}
+
+.flex {
+  display: flex;
+  gap: 0.5em;
+}
+
+.title {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 1;
+}
+
+html[data-theme='light'] .title {
+  background-color: white;
+}
+
+html[data-theme='dark'] .title {
+  background-color: #11191f;
+}
+
+.wrap {
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.column {
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.column2 {
+  flex-direction: column;
+  align-items: center;
+}
+.space-around {
+  justify-content: space-around;
+}
+
+.space-between {
+  justify-content: space-between;
+  align-items: center;
+  margin: 0;
+}
+
+.buttons {
+  align-items: center;
+}
+.buttons > select {
+  margin: 0;
+}
+
+.buttons > * {
+  width: 9em;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+  width: 15em;
+  overflow-y: scroll;
+  height: 25em;
+}
+
+.sidebar::-webkit-scrollbar {
+  display: none;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 15em);
+  grid-auto-rows: auto;
+  gap: 1em;
+  place-content: start center;
+  flex: 1;
+}
+
+.color-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 4.5em);
+  grid-auto-rows: auto;
+  gap: 0.5em;
+  place-content: start center;
+}
+
+.size-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 4em);
+  grid-auto-rows: auto;
+  gap: 0.5em;
+}
+
+.modal-size-gallery {
+  padding: 1em;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 6em);
+  grid-auto-rows: auto;
+  gap: 0.5em;
+}
+
+.gallery2 {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2em;
+}
+
+.sneaker-item-details {
+  margin-top: 1em;
+  margin-bottom: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5em;
+}
+
+.color-button {
+  margin-inline: auto;
+  padding: 1em;
+  border-radius: 50%;
+}
+
+.modal-card {
+  max-width: 50em;
+  overflow: hidden;
+}
+
+.modal-flex {
+  display: flex;
+  gap: 2em;
+}
+
+.modal-flex > img {
+  flex: 1;
+  height: 23em;
+}
+
+.modal-details {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  height: 25em;
+  overflow-y: scroll;
+}
+
+.modal-details > *,
+.modal-details > * > h3 {
+  margin: 0;
+}
+
+.article-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-details > button {
+  border-radius: 0.5em;
+}
+
+.modal-card::-webkit-scrollbar,
+.modal-details::-webkit-scrollbar {
+  display: none;
+}
