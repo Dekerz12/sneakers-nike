@@ -1,9 +1,9 @@
-import { createContext, useContext, useEffect } from 'react';
-import { useState } from 'react';
-import useToggle from './customhooks/useToggle';
-import useFilter from './customhooks/useFilter';
-import { useQuery } from '@tanstack/react-query';
-import axios from 'axios';
+import { createContext, useContext, useEffect } from "react";
+import { useState } from "react";
+import useToggle from "./customhooks/useToggle";
+import useFilter from "./customhooks/useFilter";
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
 
 const SneakersContext = createContext();
 
@@ -13,30 +13,33 @@ export function useSneakers() {
 
 export default function SneakersProvider({ children }) {
   const [isSidebarOpen, toggleIsSidebarOpen] = useToggle(false);
-  const [sortedBy, setSortedBy] = useState('a-z');
-  const [query, setQuery] = useState('');
-  const { data, isInitialLoading } = useQuery(['sneakers'], () => {
+  const [sortedBy, setSortedBy] = useState("a-z");
+  const [query, setQuery] = useState("");
+  const { data, isInitialLoading } = useQuery(["sneakers"], () => {
     return axios.get(
-      'https://raw.githubusercontent.com/Stupidism/goat-sneakers/master/api.json'
+      "https://raw.githubusercontent.com/Stupidism/goat-sneakers/master/api.json"
     );
   });
   const sneakers = data?.data.sneakers;
   const [colors, selectedColors, handleSelectedColor] = useFilter(
     sneakers,
-    'color'
+    "color"
   );
 
   const [brands, selectedBrands, handleSelectedBrands] = useFilter(
     sneakers,
-    'brand_name'
+    "brand_name"
   );
   const [shoeCondition, selectedShoeCondition, handleSelectedShoeCondition] =
-    useFilter(sneakers, 'shoe_condition');
+    useFilter(sneakers, "shoe_condition");
 
   const [size, selectedSize, handleSelectedSize] = useFilter(
     sneakers,
-    'size_range'
+    "size_range"
   );
+
+  const [favorites, setFavorites] = useState([]);
+  const [cartItems, setCartItems] = useState([]);
 
   const filteredSneakers = sneakers
     ?.filter((sneaker) => {
@@ -69,17 +72,17 @@ export default function SneakersProvider({ children }) {
     })
     .sort((a, b) => {
       switch (sortedBy) {
-        case 'a-z':
+        case "a-z":
           return a.name < b.name ? -1 : 1;
-        case 'z-a':
+        case "z-a":
           return a.name > b.name ? -1 : 1;
-        case 'oldest':
+        case "oldest":
           return a.release_date_unix - b.release_date_unix;
-        case 'newest':
+        case "newest":
           return b.release_date_unix - a.release_date_unix;
-        case 'low to high':
+        case "low to high":
           return a.retail_price_cents - b.retail_price_cents;
-        case 'high to low':
+        case "high to low":
           return b.retail_price_cents - a.retail_price_cents;
       }
     });
@@ -107,7 +110,10 @@ export default function SneakersProvider({ children }) {
         size,
         selectedSize,
         handleSelectedSize,
-      }}>
+        favorites,
+        setFavorites,
+      }}
+    >
       {children}
     </SneakersContext.Provider>
   );

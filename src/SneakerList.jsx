@@ -1,5 +1,5 @@
-import { useSneakers } from './SneakerContext';
-import Sneaker from './Sneaker';
+import { useSneakers } from "./SneakerContext";
+import Sneaker from "./Sneaker";
 
 export default function SneakerList() {
   const { filteredSneakers, isInitialLoading } = useSneakers();
@@ -9,7 +9,7 @@ export default function SneakerList() {
   }
 
   return (
-    <div className='gallery'>
+    <div className="gallery">
       {filteredSneakers.length > 0 ? (
         filteredSneakers?.map((sneaker) => (
           <Sneaker key={sneaker.id} {...sneaker} />

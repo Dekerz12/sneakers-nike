@@ -117,17 +117,19 @@ html[data-theme='dark'] .title {
 }
 
 .sneaker-item-details {
+  position: relative;
   margin-top: 1em;
   margin-bottom: 0;
   width: 100%;
+  height: 30%;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-content: space-between;
   gap: 0.5em;
 }
 
 .color-button {
-  margin-inline: auto;
+  margin-inline: auto;  
   padding: 1em;
   border-radius: 50%;
 }
@@ -172,4 +174,19 @@ html[data-theme='dark'] .title {
 .modal-card::-webkit-scrollbar,
 .modal-details::-webkit-scrollbar {
   display: none;
+}
+
+.favorite{
+  background-color: red;
+  border-color: red;
+}
+
+.fav{
+  color: red;
+}
+
+.heart-icon{
+  position: absolute;
+  right: 80px;
+  bottom: 20px;
 }
