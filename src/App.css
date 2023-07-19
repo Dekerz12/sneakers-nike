@@ -80,11 +80,12 @@ html[data-theme='dark'] .title {
 
 .gallery {
   display: grid;
-  grid-template-columns: repeat(auto-fill, 15em);
+  grid-template-columns: repeat(auto-fill, 30%);
   grid-auto-rows: auto;
   gap: 1em;
   place-content: start center;
   flex: 1;
+
 }
 
 .color-gallery {
@@ -117,11 +118,10 @@ html[data-theme='dark'] .title {
 }
 
 .sneaker-item-details {
-  position: relative;
+ 
   margin-top: 1em;
   margin-bottom: 0;
   width: 100%;
-  height: 30%;
   display: flex;
   flex-direction: column;
   align-content: space-between;
@@ -176,6 +176,11 @@ html[data-theme='dark'] .title {
   display: none;
 }
 
+.card{
+  position: relative;
+
+}
+
 .favorite{
   background-color: red;
   border-color: red;
@@ -186,7 +191,7 @@ html[data-theme='dark'] .title {
 }
 
 .heart-icon{
+  cursor: pointer;
   position: absolute;
-  right: 80px;
-  bottom: 20px;
+  
 }

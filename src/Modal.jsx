@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useSneakers } from "./SneakerContext";
-export default function Modal({ close, prop }) {
+export default function Modal({ close, prop, onClick }) {
   const [selectedSize, setSelectedSize] = useState(null);
   const {
     main_picture_url,
@@ -61,15 +61,7 @@ export default function Modal({ close, prop }) {
               <button>Add to Bag</button>
               <button
                 className={favorites.includes(name) ? "favorite" : "secondary"}
-                onClick={(e) => {
-                  if (favorites.includes(name)) {
-                    setFavorites((prev) =>
-                      prev.filter((favSneakerName) => favSneakerName !== name)
-                    );
-                  } else {
-                    setFavorites((prev) => [...prev, name]);
-                  }
-                }}
+                onClick={onClick}
               >
                 Favourite
               </button>
