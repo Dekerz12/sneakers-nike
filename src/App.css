@@ -69,9 +69,9 @@ html[data-theme='dark'] .title {
   display: flex;
   flex-direction: column;
   gap: 2em;
-  width: 15em;
   overflow-y: scroll;
   height: 25em;
+  transition: width .3s linear .3s;
 }
 
 .sidebar::-webkit-scrollbar {
@@ -86,13 +86,13 @@ html[data-theme='dark'] .title {
   place-content: start center;
   flex: 1;
 
+
 }
 
 .color-gallery {
   display: grid;
   grid-template-columns: repeat(auto-fill, 4.5em);
   grid-auto-rows: auto;
-  gap: 0.5em;
   place-content: start center;
 }
 
