@@ -71,7 +71,7 @@ html[data-theme='dark'] .title {
   gap: 2em;
   overflow-y: scroll;
   height: 25em;
-  transition: width .3s linear .3s;
+  transition: width .2s linear .2s;
 }
 
 .sidebar::-webkit-scrollbar {
