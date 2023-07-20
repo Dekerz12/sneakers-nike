@@ -5,19 +5,23 @@ import ThemePicker from "./ThemePicker";
 import Sidebar from "./Sidebar";
 import SneakerList from "./SneakerList";
 import Total from "./Total";
+import Checkout from "./Checkout";
 import "./App.css";
 
 function App() {
   return (
-    <div className="container-fluid">
-      <div className="flex headings title">
-        <h1>Nike</h1>
-        <ThemePicker />
-      </div>
+    <SneakersProvider>
+      <div className="container-fluid">
+        <div className="flex headings title">
+          <h1>Nike</h1>
+          <div className="flex">
+            <ThemePicker />
+          </div>
+          <Checkout />
+        </div>
 
-      <SneakersProvider>
         <section style={{ marginTop: "5em" }}>
-          <hgroup className="flex space-between">
+          <hgroup className="flex space-between button-sort">
             <Total />
             <div className="flex buttons">
               <SidebarButton />
@@ -30,8 +34,8 @@ function App() {
           <Sidebar />
           <SneakerList />
         </section>
-      </SneakersProvider>
-    </div>
+      </div>
+    </SneakersProvider>
   );
 }
 

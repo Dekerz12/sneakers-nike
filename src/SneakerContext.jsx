@@ -112,6 +112,8 @@ export default function SneakersProvider({ children }) {
         handleSelectedSize,
         favorites,
         setFavorites,
+        cartItems,
+        setCartItems,
       }}
     >
       {children}

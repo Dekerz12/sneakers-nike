@@ -3,15 +3,17 @@ import { useSneakers } from "./SneakerContext";
 export default function Modal({ close, prop, onClick }) {
   const [selectedSize, setSelectedSize] = useState(null);
   const {
+    id,
     main_picture_url,
+    grid_picture_url,
     story_html,
     name,
     gender,
     retail_price_cents,
     size_range,
   } = prop;
-  const { favorites, setFavorites } = useSneakers();
-  console.log(favorites);
+  const { favorites, cartItems, setCartItems } = useSneakers();
+
   return (
     <dialog open onClick={close}>
       <article className="modal-card" onClick={(e) => e.stopPropagation()}>
@@ -58,7 +60,35 @@ export default function Modal({ close, prop, onClick }) {
               ))}
             </div>
             <div className="article-details">
-              <button>Add to Bag</button>
+              <button
+                onClick={() => {
+                  if (selectedSize) {
+                    if (cartItems.some((item) => item.id === id)) {
+                      setCartItems((pre) => [
+                        ...pre,
+                        {
+                          quantity: 1,
+                        },
+                      ]);
+                    }
+                    setCartItems((pre) => [
+                      ...pre,
+                      {
+                        id,
+                        name,
+                        selectedSize,
+                        retail_price_cents,
+                        gender,
+                        quantity: 1,
+                        grid_picture_url,
+                      },
+                    ]);
+                  }
+                }}
+              >
+                Add to Bag
+              </button>
+
               <button
                 className={favorites.includes(name) ? "favorite" : "secondary"}
                 onClick={onClick}
@@ -73,3 +103,5 @@ export default function Modal({ close, prop, onClick }) {
     </dialog>
   );
 }
+
+// id,size,name,retail_price_cents,category,quantity

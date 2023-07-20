@@ -1,14 +1,18 @@
-import { useSneakers } from './SneakerContext';
-import { LuSettings2 } from 'react-icons/lu';
+import { useSneakers } from "./SneakerContext";
+import { LuSettings2 } from "react-icons/lu";
 export default function SidebarButton() {
   const { isSidebarOpen, toggleIsSidebarOpen } = useSneakers();
   return (
     <div
-      role='button'
-      style={{ border: 'none' }}
+      role="button"
+      style={{ border: "none", alignItems: "center" }}
       onClick={toggleIsSidebarOpen}
-      className='flex space-between'>
-      <span>{isSidebarOpen ? 'Hide' : 'Show'} Filters</span> <LuSettings2 />
+      className="flex"
+    >
+      <span style={{ fontSize: ".9em" }}>
+        {isSidebarOpen ? "Hide" : "Show"} Filters
+      </span>
+      <LuSettings2 />
     </div>
   );
 }

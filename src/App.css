@@ -51,7 +51,7 @@ html[data-theme='dark'] .title {
 .space-between {
   justify-content: space-between;
   align-items: center;
-  margin: 0;
+  margin-inline: 3em;
 }
 
 .buttons {
@@ -172,7 +172,7 @@ html[data-theme='dark'] .title {
 }
 
 .modal-card::-webkit-scrollbar,
-.modal-details::-webkit-scrollbar {
+.modal-details::-webkit-scrollbar,.checkout-list::-webkit-scrollbar  {
   display: none;
 }
 
@@ -195,3 +195,54 @@ html[data-theme='dark'] .title {
   position: absolute;
   
 }
+
+.cart-icon{
+  top: .4em;
+  position: relative;
+  transition: right .4s;
+  right: -28em;
+  cursor: pointer;
+  
+}
+svg{
+  font-size: 30px;
+}
+.cart-sidebar{
+  height: 100%;
+  z-index: 0;
+  margin: 0; 
+  position: fixed;
+
+  right: 0;
+}
+
+.cart-details{
+  justify-content: center;
+  align-items: center; 
+  padding: 2em 5em;
+
+}
+
+.cart-card{
+  position: relative;
+  transition: right .4s;
+  right:-32em;
+}
+
+.cart-item-details{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items:center
+}
+
+.cart-buttons{
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.cart-buttons>span>svg{
+  width: .5em;
+}
+
