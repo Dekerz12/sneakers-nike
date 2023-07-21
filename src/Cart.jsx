@@ -110,7 +110,10 @@ function CartItem({
   function increaseSneakerCount() {
     setCartItems((pre) =>
       pre.map((item) => {
-        if (item.selectedSize === cartItems[index].selectedSize) {
+        if (
+          item.selectedSize === cartItems[index].selectedSize &&
+          item.name === cartItems[index].name
+        ) {
           return { ...item, quantity: item.quantity + 1 };
         } else {
           return item;
@@ -121,9 +124,18 @@ function CartItem({
   function decreaseSneakerCount() {
     setCartItems((pre) =>
       pre.map((item) => {
-        if (item.selectedSize === cartItems[index].selectedSize) {
+        if (
+          item.selectedSize === cartItems[index].selectedSize &&
+          item.name === cartItems[index].name
+        ) {
           if (item.quantity === 1) {
-            setCartItems((pre) => pre.filter((elem) => item.id !== elem.id));
+            setCartItems((pre) =>
+              pre.filter(
+                (elem) =>
+                  item.name !== elem.name ||
+                  item.selectedSize !== elem.selectedSize
+              )
+            );
           }
           return { ...item, quantity: item.quantity - 1 };
         } else {
