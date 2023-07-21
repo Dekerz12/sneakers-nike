@@ -135,7 +135,7 @@ function CartItem({
       })
     );
   }
-  function decreaseSneakerCount() {
+  function decreaseSneakerCount(id) {
     setCartItems((pre) =>
       pre.map((item) => {
         if (
@@ -146,8 +146,7 @@ function CartItem({
             setCartItems((pre) =>
               pre.filter(
                 (elem) =>
-                  item.name !== elem.name ||
-                  item.selectedSize !== elem.selectedSize
+                  item.selectedSize !== elem.selectedSize || item.id !== elem.id
               )
             );
           }
@@ -167,7 +166,7 @@ function CartItem({
     );
   }
   return (
-    <div className='flex' style={{ gap: '1em' }}>
+    <div className='flex' style={{ gap: '1em', marginBottom: '2em' }}>
       {cartItems.length ? (
         <>
           {' '}
@@ -197,7 +196,7 @@ function CartItem({
                 <span
                   role='button'
                   className='cart-button'
-                  onClick={decreaseSneakerCount}>
+                  onClick={() => decreaseSneakerCount(id)}>
                   -
                 </span>
                 <span

@@ -176,6 +176,7 @@ article {
 
 .scrollable {
   overflow: scroll;
+
   height: 25em;
 }
 
