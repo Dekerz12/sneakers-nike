@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useSneakers } from './Context/SneakerContext';
+import useToggle from './customhooks/useToggle';
 
 export default function Modal({ close, prop }) {
   const [selectedSize, setSelectedSize] = useState(null);
@@ -14,6 +15,7 @@ export default function Modal({ close, prop }) {
     size_range,
   } = prop;
   const { favorites, setFavorites, cartItems, setCartItems } = useSneakers();
+  const [validation, toggleValidation] = useToggle();
   const index = cartItems.findIndex(
     (cart) => cart.id == id && cart.selectedSize == selectedSize
   );
@@ -54,6 +56,8 @@ export default function Modal({ close, prop }) {
           })
         );
       }
+    } else {
+      toggleValidation();
     }
   }
 
@@ -97,6 +101,7 @@ export default function Modal({ close, prop }) {
                     if (selectedSize === size) {
                       setSelectedSize(null);
                     } else {
+                      toggleValidation(false);
                       setSelectedSize(parseFloat(e.target.innerHTML));
                     }
                   }}>
@@ -106,7 +111,7 @@ export default function Modal({ close, prop }) {
             </div>
             <div className=''>
               <button onClick={handleAddToCartClick}>Add to Bag</button>
-
+              {validation && <span>Please Select a Size First</span>}
               <button
                 className={favorites.includes(name) ? 'favorite' : 'secondary'}
                 onClick={handleFavoriteButtonClick}>

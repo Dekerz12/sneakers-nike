@@ -22,6 +22,14 @@ svg {
 
 .cart-icon2 {
   color: black;
+  background-color: white;
+}
+
+.heart-icon {
+  position: absolute;
+  color: red;
+  bottom: 1em;
+  right: 3em;
 }
 
 .cart-count {
@@ -74,6 +82,7 @@ svg {
   margin-bottom: 0;
 }
 .card {
+  position: relative;
   cursor: pointer;
 }
 
