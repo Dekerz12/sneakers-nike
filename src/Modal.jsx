@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useSneakers } from './Context/SneakerContext';
 import useToggle from './customhooks/useToggle';
-
+import toast, { Toaster } from 'react-hot-toast';
 export default function Modal({ close, prop }) {
   const [selectedSize, setSelectedSize] = useState(null);
   const {
@@ -30,6 +30,8 @@ export default function Modal({ close, prop }) {
     }
   }
 
+  const successMessage = () => toast.success('🛒 Added to cart Successfully');
+
   function handleAddToCartClick() {
     if (selectedSize) {
       if (index === -1) {
@@ -56,6 +58,7 @@ export default function Modal({ close, prop }) {
           })
         );
       }
+      successMessage();
     } else {
       toggleValidation();
     }
@@ -63,6 +66,7 @@ export default function Modal({ close, prop }) {
 
   return (
     <dialog open onClick={close}>
+      <Toaster />
       <article className='modal-card' onClick={(e) => e.stopPropagation()}>
         <a aria-label='Close' className='close' onClick={close}></a>
 
