@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { useSneakers } from './Context/SneakerContext';
-import toast, { useToaster } from 'react-hot-toast';
+import toast from 'react-hot-toast';
 import useToggle from './customhooks/useToggle';
+import Notifications from './Notifications';
 
 export default function Modal({ close, prop }) {
   const [selectedSize, setSelectedSize] = useState(null);
@@ -30,8 +31,6 @@ export default function Modal({ close, prop }) {
       setFavorites((prev) => [...prev, name]);
     }
   }
-
-  // const successMessage = () => toast.success('🛒 Added to cart Successfully');
 
   function handleAddToCartClick() {
     if (selectedSize) {
@@ -97,8 +96,8 @@ export default function Modal({ close, prop }) {
                   role='button'
                   key={crypto.randomUUID()}
                   style={{
-                    fontSize: '0.7em',
-                    padding: '0.5em 2.5em',
+                    fontSize: '0.8em',
+                    padding: '0.8em 1.8em',
                     border: 'none',
                     outline: selectedSize === size ? '2px solid black' : 'none',
                   }}
@@ -132,54 +131,4 @@ export default function Modal({ close, prop }) {
   );
 }
 
-const Notifications = () => {
-  const { toasts, handlers } = useToaster();
-  const { startPause, endPause, calculateOffset, updateHeight } = handlers;
-
-  return (
-    <div
-      style={{
-        position: 'fixed',
-        marginInline: 'auto',
-        top: 8,
-        left: '40%',
-        transform: 'translate(-50%, -50%)',
-      }}
-      onMouseEnter={startPause}
-      onMouseLeave={endPause}>
-      {toasts.map((toast) => {
-        const offset = calculateOffset(toast, {
-          reverseOrder: false,
-          gutter: 8,
-        });
-
-        const ref = (el) => {
-          if (el && typeof toast.height !== 'number') {
-            const height = el.getBoundingClientRect().height;
-            updateHeight(toast.id, height);
-          }
-        };
-        return (
-          <div
-            key={toast.id}
-            ref={ref}
-            style={{
-              position: 'absolute',
-
-              width: '14em',
-              padding: '.3em',
-              borderRadius: '.3em',
-              background: 'white',
-              transition: 'all 0.5s ease-out',
-              opacity: toast.visible ? 1 : 0,
-              transform: `translateY(${offset}px)`,
-            }}
-            {...toast.ariaProps}>
-            {toast.message}
-          </div>
-        );
-      })}
-    </div>
-  );
-};
 // id,size,name,retail_price_cents,category,quantity
