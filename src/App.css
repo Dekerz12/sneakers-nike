@@ -10,11 +10,28 @@ svg {
 
 .fixed > svg {
   font-size: 2em;
-  color: white;
-  background-color: black;
+
   cursor: pointer;
 }
 
+.cart-icon {
+  position: relative;
+  color: white;
+  background-color: black;
+}
+
+.cart-icon2 {
+  color: black;
+}
+
+.cart-count {
+  position: absolute;
+  cursor: pointer;
+  top: 3px;
+  left: 0.8em;
+  right: 0;
+  bottom: 0;
+}
 /* sneakers */
 .gallery {
   display: grid;

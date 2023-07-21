@@ -1,4 +1,4 @@
-import { BsFillCartFill } from 'react-icons/bs';
+import { BsFillCartFill, BsXSquareFill } from 'react-icons/bs';
 import useToggle from './customhooks/useToggle';
 import { ImCross } from 'react-icons/im';
 import { useSneakers } from './Context/SneakerContext';
@@ -16,12 +16,22 @@ function totalPrice(arr) {
 
 export default function Cart() {
   const [isCartOpen, toggleCart] = useToggle(false);
+  const { cartItems } = useSneakers();
 
   return (
     <div
       className='flex align-start fixed'
       style={{ right: isCartOpen ? 0 : '-25em' }}>
-      <BsFillCartFill onClick={toggleCart} className='cart-icon' />
+      {isCartOpen ? (
+        <BsXSquareFill onClick={toggleCart} className='cart-icon2' />
+      ) : (
+        <>
+          <BsFillCartFill onClick={toggleCart} className='cart-icon' />
+          <span onClick={toggleCart} className='cart-count'>
+            {cartItems.length}
+          </span>
+        </>
+      )}
       <article style={{ marginTop: 0 }}>
         <CartHeader />
         <CartBody />
@@ -149,8 +159,12 @@ function CartItem({
     );
   }
 
-  function removeSneaker(id) {
-    setCartItems((pre) => pre.filter((elem) => id !== elem.id));
+  function removeSneaker(name, selectedSize) {
+    setCartItems((pre) =>
+      pre.filter(
+        (elem) => selectedSize !== elem.selectedSize || name !== elem.name
+      )
+    );
   }
   return (
     <div className='flex' style={{ gap: '1em' }}>
@@ -173,7 +187,9 @@ function CartItem({
                 height: '100%',
                 justifyContent: 'space-between',
               }}>
-              <span className='cart-x-button' onClick={() => removeSneaker(id)}>
+              <span
+                className='cart-x-button'
+                onClick={() => removeSneaker(name, selectedSize)}>
                 <ImCross />
               </span>
               <p>${retail_price_cents / 100}</p>
