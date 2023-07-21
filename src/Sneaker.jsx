@@ -1,23 +1,13 @@
 import { BsHeartFill } from 'react-icons/bs';
+import Modal from './Modal';
+import useToggle from './customhooks/useToggle';
 export default function Sneaker(props) {
   const { gender, name, grid_picture_url, retail_price_cents } = props;
-  // const [modal, toggleModal] = useToggle(false);
-  // const { favorites, setFavorites, isSidebarOpen, toggleIsSidebarOpen } =
-  // useSneakers();
-  // function handleFavoriteButtonClick(e) {
-  //   e.stopPropagation();
-  //   if (favorites.includes(name)) {
-  //     setFavorites((prev) =>
-  //       prev.filter((favSneakerName) => favSneakerName !== name)
-  //     );
-  //   } else {
-  //     setFavorites((prev) => [...prev, name]);
-  //   }
-  // }
+  const [modal, toggleModal] = useToggle(false);
 
   return (
     <>
-      <div className='flex column card'>
+      <div className='flex column card' onClick={toggleModal}>
         <img src={grid_picture_url} alt='' />
         <div className='flex column space-between' style={{ height: '100%' }}>
           <div className='headings'>
@@ -34,6 +24,7 @@ export default function Sneaker(props) {
           </p>
         </div>
       </div>
+      {modal && <Modal close={toggleModal} prop={props} />}
     </>
   );
 }

@@ -27,7 +27,7 @@ svg {
 .sidebar {
   transition: flex-basis 0.2s linear 0.2s;
   overflow: scroll;
-  height: 20em;
+  height: 30em;
 }
 
 .color-gallery {
@@ -50,6 +50,12 @@ svg {
   gap: 0.5em;
 }
 
+.favorite {
+  background: red;
+}
+.size-gallery > div > button {
+  margin-bottom: 0;
+}
 .card {
   cursor: pointer;
 }
@@ -70,7 +76,30 @@ svg {
   padding: 0 0.5em;
 }
 article {
+  min-width: 25em;
   max-width: 25em;
+}
+
+/* Modal */
+.modal-img > img {
+  max-width: 25em;
+}
+.modal-card {
+  max-width: 50em;
+}
+
+.modal-details {
+  gap: 1em;
+  height: 25em;
+  overflow-y: scroll;
+}
+
+.size-gallery2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 22%);
+  grid-auto-rows: auto;
+  gap: 0.5em;
+  place-content: center;
 }
 
 /* UTILITY CLASSES */
@@ -125,6 +154,7 @@ article {
 }
 
 .scrollable::-webkit-scrollbar,
-.sidebar::-webkit-scrollbar {
+.sidebar::-webkit-scrollbar,
+.modal-details::-webkit-scrollbar {
   display: none;
 }

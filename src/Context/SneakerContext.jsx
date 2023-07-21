@@ -38,6 +38,9 @@ export default function SneakersProvider({ children }) {
     'size_range'
   );
 
+  const [favorites, setFavorites] = useState([]);
+  const [cartItems, setCartItems] = useState([]);
+
   const filteredSneakers = sneakers
     ?.filter((sneaker) => {
       const nameOrNicknameMatches =
@@ -106,6 +109,10 @@ export default function SneakersProvider({ children }) {
         size,
         selectedSize,
         handleSelectedSize,
+        favorites,
+        setFavorites,
+        cartItems,
+        setCartItems,
       }}>
       {children}
     </SneakersContext.Provider>

@@ -18,7 +18,15 @@ export default function Sidebar() {
         flexBasis: isSidebarOpen ? '15em' : '0',
         gap: '.3em',
       }}>
-      <input type='text' value={query} onChange={handleSearch} autoFocus />
+      <label htmlFor='search'>Search</label>
+      <input
+        id='search'
+        type='text'
+        value={query}
+        onChange={handleSearch}
+        autoFocus
+      />
+
       <FilterOption name={'Colors'}>
         <Colors />
       </FilterOption>
