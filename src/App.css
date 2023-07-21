@@ -1,92 +1,33 @@
 img {
   display: block;
   max-width: 100%;
-
   transform: scaleX(-1);
 }
 
-html[data-theme='light'] img {
-  background-color: rgb(245, 245, 245);
+svg {
+  cursor: pointer;
 }
 
-.flex {
-  display: flex;
-  gap: 0.5em;
+.fixed > svg {
+  font-size: 2em;
+  color: white;
+  background-color: black;
+  cursor: pointer;
 }
 
-.title {
-  width: 100%;
-  position: fixed;
-  top: 0;
-  z-index: 1;
-}
-
-html[data-theme='light'] .title {
-  background-color: white;
-}
-
-html[data-theme='dark'] .title {
-  background-color: #11191f;
-}
-
-.wrap {
-  flex-wrap: wrap;
-  align-items: center;
-}
-
-.column {
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: space-between;
-}
-
-.column2 {
-  flex-direction: column;
-  align-items: center;
-}
-.space-around {
-  justify-content: space-around;
-}
-
-.space-between {
-  justify-content: space-between;
-  align-items: center;
-  margin-inline: 3em;
-}
-
-.buttons {
-  align-items: center;
-}
-.buttons > select {
-  margin: 0;
-}
-
-.buttons > * {
-  width: 9em;
-}
-
-.sidebar {
-  display: flex;
-  flex-direction: column;
-  gap: 2em;
-  overflow-y: scroll;
-  height: 25em;
-  transition: width .2s linear .2s;
-}
-
-.sidebar::-webkit-scrollbar {
-  display: none;
-}
-
+/* sneakers */
 .gallery {
   display: grid;
   grid-template-columns: repeat(auto-fill, 30%);
   grid-auto-rows: auto;
   gap: 1em;
   place-content: start center;
-  flex: 1;
+}
 
-
+.sidebar {
+  transition: flex-basis 0.2s linear 0.2s;
+  overflow: scroll;
+  height: 20em;
 }
 
 .color-gallery {
@@ -96,6 +37,12 @@ html[data-theme='dark'] .title {
   place-content: start center;
 }
 
+.color-button {
+  margin-inline: auto;
+  padding: 1em;
+  border-radius: 50%;
+}
+
 .size-gallery {
   display: grid;
   grid-template-columns: repeat(auto-fill, 4em);
@@ -103,146 +50,81 @@ html[data-theme='dark'] .title {
   gap: 0.5em;
 }
 
-.modal-size-gallery {
-  padding: 1em;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, 6em);
-  grid-auto-rows: auto;
-  gap: 0.5em;
+.card {
+  cursor: pointer;
 }
 
-.gallery2 {
-  display: flex;
-  flex-direction: column;
-  gap: 0.2em;
+/* cart */
+.cart-item-image {
+  flex-basis: 7em;
 }
-
-.sneaker-item-details {
- 
-  margin-top: 1em;
-  margin-bottom: 0;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-content: space-between;
-  gap: 0.5em;
-}
-
-.color-button {
-  margin-inline: auto;  
-  padding: 1em;
-  border-radius: 50%;
-}
-
-.modal-card {
-  max-width: 50em;
-  overflow: hidden;
-}
-
-.modal-flex {
-  display: flex;
-  gap: 2em;
-}
-
-.modal-flex > img {
+.cart-item-details {
   flex: 1;
-  height: 23em;
 }
 
-.modal-details {
+.cart-x-button {
+  text-align: right;
+}
+
+.cart-button {
+  padding: 0 0.5em;
+}
+article {
+  max-width: 25em;
+}
+
+/* UTILITY CLASSES */
+
+.flex {
   display: flex;
+}
+
+.column {
   flex-direction: column;
-  gap: 1em;
+}
+
+.center {
+  align-items: center;
+  justify-content: center;
+}
+
+.justify {
+  justify-content: center;
+}
+
+.align {
+  align-items: center;
+}
+
+.align-start {
+  align-items: flex-start;
+}
+
+.space-between {
+  justify-content: space-between;
+}
+
+.flex1 {
+  flex: 1;
+}
+
+.relative {
+  position: relative;
+}
+
+.fixed {
+  position: fixed;
+  top: 0;
+  transition: right 0.4s;
+  z-index: 1;
+}
+
+.scrollable {
+  overflow: scroll;
   height: 25em;
-  overflow-y: scroll;
 }
 
-.modal-details > *,
-.modal-details > * > h3 {
-  margin: 0;
-}
-
-.article-details {
-  display: flex;
-  flex-direction: column;
-}
-
-.modal-details > button {
-  border-radius: 0.5em;
-}
-
-.modal-card::-webkit-scrollbar,
-.modal-details::-webkit-scrollbar,.checkout-list::-webkit-scrollbar  {
+.scrollable::-webkit-scrollbar,
+.sidebar::-webkit-scrollbar {
   display: none;
 }
-
-.card{
-  position: relative;
-
-}
-
-.favorite{
-  background-color: red;
-  border-color: red;
-}
-
-.fav{
-  color: red;
-}
-
-.heart-icon{
-  cursor: pointer;
-  position: absolute;
-  
-}
-
-.cart-icon{
-  top: .4em;
-  position: relative;
-  transition: right .4s;
-  right: -28em;
-  cursor: pointer;
-  
-}
-svg{
-  font-size: 30px;
-}
-.cart-sidebar{
-  height: 100%;
-  z-index: 0;
-  margin: 0; 
-  position: fixed;
-
-  right: 0;
-}
-
-.cart-details{
-  justify-content: center;
-  align-items: center; 
-  padding: 2em 5em;
-
-}
-
-.cart-card{
-  position: relative;
-  transition: right .4s;
-  right:-32em;
-}
-
-.cart-item-details{
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items:center
-}
-
-.cart-buttons{
-  display: flex;
-  flex-direction: column;
-  gap: 1em;
-}
-
-.cart-buttons>span>svg{
-  width: .5em;
-}
-

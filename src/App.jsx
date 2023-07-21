@@ -1,41 +1,44 @@
-import SneakersProvider from "./SneakerContext";
-import SidebarButton from "./SidebarButton";
-import Dropdown from "./Dropdown";
-import ThemePicker from "./ThemePicker";
-import Sidebar from "./Sidebar";
-import SneakerList from "./SneakerList";
-import Total from "./Total";
-import Checkout from "./Checkout";
-import "./App.css";
+import SneakersProvider from './Context/SneakerContext';
+import Dropdown from './Dropdown';
+import SidebarToggleButton from './SidebarToggleButton';
+import ThemePicker from './ThemePicker';
+import Cart from './Cart';
+import Sneakers from './Sneakers';
+import Total from './Total';
+
+import './App.css';
 
 function App() {
   return (
     <SneakersProvider>
-      <div className="container-fluid">
-        <div className="flex headings title">
-          <h1>Nike</h1>
-          <div className="flex">
-            <ThemePicker />
-          </div>
-          <Checkout />
-        </div>
-
-        <section style={{ marginTop: "5em" }}>
-          <hgroup className="flex space-between button-sort">
-            <Total />
-            <div className="flex buttons">
-              <SidebarButton />
-              <Dropdown />
-            </div>
-          </hgroup>
-        </section>
-
-        <section className="flex content">
-          <Sidebar />
-          <SneakerList />
-        </section>
+      <div className='container-fluid relative'>
+        <Cart />
+        <Navigation />
+        <Header />
+        <Sneakers />
       </div>
     </SneakersProvider>
+  );
+}
+
+function Navigation() {
+  return (
+    <div className='flex space-between header align headings'>
+      <h3>Nike</h3>
+      <ThemePicker />
+    </div>
+  );
+}
+
+function Header() {
+  return (
+    <section className='flex space-between'>
+      <Total />
+      <div className='flex' style={{ gap: '.5em', width: '25%' }}>
+        <SidebarToggleButton />
+        <Dropdown />
+      </div>
+    </section>
   );
 }
 

@@ -1,12 +1,11 @@
 import { useState } from 'react';
-import { useSneakers } from '../SneakerContext';
+import { useSneakers } from '../Context/SneakerContext';
 
-export default function SizeFilter() {
+export default function Sizes() {
   const { size, selectedSize, handleSelectedSize } = useSneakers();
 
   return (
     <div>
-      <h5>Size</h5>
       <div className='size-gallery'>
         {size?.map((s) => (
           <div

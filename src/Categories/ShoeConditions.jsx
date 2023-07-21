@@ -1,14 +1,13 @@
 import { useState } from 'react';
-import { useSneakers } from '../SneakerContext';
+import { useSneakers } from '../Context/SneakerContext';
 
-export default function ShoeConditionFilter() {
+export default function ShoeConditions() {
   const { shoeCondition, selectedShoeCondition, handleSelectedShoeCondition } =
     useSneakers();
   const [isChecked, setIsChecked] = useState(false);
   return (
     <div>
-      <h5>Shoe Condition</h5>
-      <div className='gallery2'>
+      <div>
         {shoeCondition?.map((shoe) => (
           <div
             key={shoe}

@@ -1,12 +1,11 @@
 import { useState } from 'react';
-import { useSneakers } from '../SneakerContext';
-export default function BrandFilter() {
+import { useSneakers } from '../Context/SneakerContext';
+export default function Brands() {
   const { brands, selectedBrands, handleSelectedBrands } = useSneakers();
   const [isChecked, setIsChecked] = useState(false);
   return (
     <div>
-      <h5>Brand</h5>
-      <div className='gallery2'>
+      <div>
         {brands?.map((brand) => (
           <div
             key={brand}

@@ -1,5 +1,4 @@
-import { useSneakers } from './SneakerContext';
-
+import { useSneakers } from './Context/SneakerContext';
 export default function Dropdown() {
   const { sortedBy, setSortedBy } = useSneakers();
   const handleChange = (event) => {

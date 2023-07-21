@@ -1,6 +1,6 @@
-import { useSneakers } from '../SneakerContext';
+import { useSneakers } from '../Context/SneakerContext';
 
-export default function ColorFilter() {
+export default function Colors() {
   const { colors, selectedColors, handleSelectedColor } = useSneakers();
 
   const colorMap = {
@@ -10,10 +10,9 @@ export default function ColorFilter() {
   };
   return (
     <div>
-      <h5>Colour</h5>
       <div className='color-gallery'>
         {colors?.map((color) => (
-          <div key={color} className='flex column2'>
+          <div key={color} className='flex column'>
             <span
               style={{
                 background: colorMap[color] ? colorMap[color] : color,

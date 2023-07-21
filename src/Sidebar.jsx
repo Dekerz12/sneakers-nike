@@ -1,8 +1,10 @@
-import { useSneakers } from "./SneakerContext";
-import ColorFilter from "./categories/ColorFilter";
-import BrandFilter from "./categories/BrandFilter";
-import ShoeConditionFilter from "./categories/ShoeConditionFilter";
-import SizeFilter from "./categories/SizeFilter";
+import { useSneakers } from './Context/SneakerContext';
+import useToggle from './customhooks/useToggle';
+import { BsChevronDown, BsChevronUp } from 'react-icons/bs';
+import Colors from './Categories/Colors';
+import Brands from './Categories/Brands';
+import ShoeConditions from './Categories/ShoeConditions';
+import Sizes from './Categories/Sizes';
 export default function Sidebar() {
   const { isSidebarOpen, query, setQuery } = useSneakers();
   const handleSearch = (event) => {
@@ -10,12 +12,43 @@ export default function Sidebar() {
   };
 
   return (
-    <div className="sidebar" style={{ width: isSidebarOpen ? "15em" : "0" }}>
-      <input type="text" value={query} onChange={handleSearch} autoFocus />
-      <ColorFilter />
-      <BrandFilter />
-      <ShoeConditionFilter />
-      <SizeFilter />
+    <div
+      className='sidebar flex column'
+      style={{
+        flexBasis: isSidebarOpen ? '15em' : '0',
+        gap: '.3em',
+      }}>
+      <input type='text' value={query} onChange={handleSearch} autoFocus />
+      <FilterOption name={'Colors'}>
+        <Colors />
+      </FilterOption>
+      <FilterOption name={'Brand'}>
+        <Brands />
+      </FilterOption>
+      <FilterOption name={'Shoe Condition'}>
+        <ShoeConditions />
+      </FilterOption>
+      <FilterOption name={'Size'}>
+        <Sizes />
+      </FilterOption>
     </div>
+  );
+}
+
+function FilterOption({ name = 'Name', children }) {
+  const [dropdown, toggleDropdown] = useToggle(true);
+
+  return (
+    <>
+      <div className='flex space-between align' style={{ marginBottom: '1em' }}>
+        <span>{name}</span>
+        {dropdown ? (
+          <BsChevronUp onClick={toggleDropdown} />
+        ) : (
+          <BsChevronDown onClick={toggleDropdown} />
+        )}
+      </div>
+      {dropdown && children}
+    </>
   );
 }
