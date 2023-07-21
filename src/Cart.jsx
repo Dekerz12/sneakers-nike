@@ -66,30 +66,34 @@ function CartList() {
       </center>
     );
   }
-  return cartItems.map(
-    ({
-      id,
-      name,
-      selectedSize,
-      retail_price_cents,
-      gender,
-      quantity,
-      grid_picture_url,
-    }) => {
-      return (
-        <CartItem
-          key={id + selectedSize}
-          id={id}
-          name={name}
-          selectedSize={selectedSize}
-          retail_price_cents={retail_price_cents}
-          gender={gender}
-          quantity={quantity}
-          cartItems={cartItems}
-          grid_picture_url={grid_picture_url}
-        />
-      );
-    }
+  return (
+    <div className='scrollable'>
+      {cartItems.map(
+        ({
+          id,
+          name,
+          selectedSize,
+          retail_price_cents,
+          gender,
+          quantity,
+          grid_picture_url,
+        }) => {
+          return (
+            <CartItem
+              key={id + selectedSize}
+              id={id}
+              name={name}
+              selectedSize={selectedSize}
+              retail_price_cents={retail_price_cents}
+              gender={gender}
+              quantity={quantity}
+              cartItems={cartItems}
+              grid_picture_url={grid_picture_url}
+            />
+          );
+        }
+      )}
+    </div>
   );
 }
 
@@ -159,14 +163,15 @@ function CartItem({
           <div className='flex align cart-item-details '>
             <div className='flex column headings'>
               <p>{name}</p>
-              <p>{selectedSize}</p>
-              <p>{gender}</p>
+              <p>Size: {selectedSize}</p>
+              <p>{gender}'s shoe</p>
               <p>Quantity: {quantity}</p>
             </div>
             <div
               className='flex column flex1'
               style={{
-                justifyContent: 'flex-start',
+                height: '100%',
+                justifyContent: 'space-between',
               }}>
               <span className='cart-x-button' onClick={() => removeSneaker(id)}>
                 <ImCross />
