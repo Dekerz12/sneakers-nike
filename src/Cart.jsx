@@ -142,7 +142,7 @@ function CartItem({
           item.selectedSize === cartItems[index].selectedSize &&
           item.name === cartItems[index].name
         ) {
-          if (item.quantity === 1) {
+          if (item.quantity === 1 || item.quantity === 0) {
             setCartItems((pre) =>
               pre.filter(
                 (elem) =>
